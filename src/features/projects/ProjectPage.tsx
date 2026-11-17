@@ -1,4 +1,4 @@
-import { ArrowLeft, Check } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { Link, useParams } from 'react-router'
 import { SECTION_IDS } from '@/app/sections'
@@ -11,6 +11,7 @@ import { useFeaturedProjects } from '@/hooks/use-portfolio-content'
 import { usePageMeta } from '@/hooks/use-page-meta'
 import { useMessages } from '@/i18n'
 import type { Project } from '@/types/content'
+import { RoleBadge } from './FeaturedProjects'
 import { ProjectLinks, RepoMeta } from './ProjectLinks'
 import { ProjectVisual, Screenshot } from './ProjectVisual'
 
@@ -30,9 +31,7 @@ function BackLink() {
 function Block({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section>
-      <h2 className="mb-4 font-mono text-xs font-normal tracking-wider text-cyan uppercase">
-        {title}
-      </h2>
+      <h2 className="mb-4 label-mono font-normal text-cyan">{title}</h2>
       {children}
     </section>
   )
@@ -40,10 +39,15 @@ function Block({ title, children }: { title: string; children: ReactNode }) {
 
 function BulletList({ items }: { items: string[] }) {
   return (
-    <ul className="flex flex-col gap-3">
+    <ul className="border-t border-border">
       {items.map((item) => (
-        <li key={item} className="flex gap-3 leading-relaxed text-muted">
-          <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-cyan" />
+        <li
+          key={item}
+          className="flex gap-3 border-b border-border py-3 leading-relaxed text-muted"
+        >
+          <span aria-hidden="true" className="mt-0.5 font-mono text-xs text-electric">
+            →
+          </span>
           {item}
         </li>
       ))}
@@ -70,7 +74,10 @@ function ProjectDetails({ project }: { project: Project }) {
 
       <header className="mt-6 grid items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
         <div>
-          <p className="font-mono text-xs tracking-wider text-cyan uppercase">{project.tagline}</p>
+          <div className="flex flex-wrap items-center gap-3">
+            <RoleBadge project={project} />
+            <p className="label-mono text-cyan">{project.tagline}</p>
+          </div>
           <h1 className="mt-3 text-4xl font-semibold text-foreground sm:text-5xl lg:text-6xl">
             {project.title}
           </h1>
@@ -80,7 +87,9 @@ function ProjectDetails({ project }: { project: Project }) {
             <ProjectLinks project={project} size="lg" />
           </div>
         </div>
-        <ProjectVisual project={project} priority />
+        <div className="crop-marks">
+          <ProjectVisual project={project} priority />
+        </div>
       </header>
 
       <div className="mt-16 grid gap-6 lg:grid-cols-2">
@@ -143,7 +152,7 @@ function ProjectDetails({ project }: { project: Project }) {
               {gallery.map((screenshot) => (
                 <li
                   key={screenshot.src}
-                  className="overflow-hidden rounded-xl border border-border-strong shadow-card"
+                  className="overflow-hidden rounded-md border border-border-strong"
                 >
                   <Screenshot screenshot={screenshot} />
                 </li>

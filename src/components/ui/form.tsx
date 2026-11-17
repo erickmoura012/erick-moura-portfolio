@@ -3,7 +3,7 @@ import type { ComponentProps, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 const controlClasses = [
-  'border-border-strong bg-background-alt/70 text-foreground placeholder:text-subtle w-full rounded-xl border px-4 text-sm',
+  'border-border-strong bg-background-alt/70 text-foreground placeholder:text-subtle w-full rounded-md border px-4 text-sm',
   'transition-[border-color,box-shadow] duration-200',
   'hover:border-accent/50 focus-visible:border-accent focus-visible:outline-none',
   'focus-visible:shadow-[0_0_0_3px_rgb(59_130_246/0.25)]',

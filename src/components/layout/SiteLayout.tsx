@@ -10,10 +10,9 @@ export function SiteLayout() {
 
   return (
     <div className="relative isolate flex min-h-dvh flex-col">
-      <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 page-glow" />
       <a
         href="#conteudo"
-        className="sr-only z-[60] rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+        className="sr-only z-[60] rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
       >
         {t.common.skipToContent}
       </a>

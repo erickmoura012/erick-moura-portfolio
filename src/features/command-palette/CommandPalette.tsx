@@ -24,7 +24,7 @@ const groupClass =
   '[&_[cmdk-group-heading]]:text-subtle px-2 py-1.5 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[0.6875rem] [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:uppercase'
 
 const itemClass =
-  'text-muted data-[selected=true]:bg-surface-hover data-[selected=true]:text-foreground flex min-h-11 cursor-pointer items-center gap-3 rounded-xl px-3 text-sm [&_svg]:size-4 [&_svg]:shrink-0'
+  'text-muted data-[selected=true]:bg-surface-hover data-[selected=true]:text-foreground flex min-h-11 cursor-pointer items-center gap-3 rounded-md px-3 text-sm [&_svg]:size-4 [&_svg]:shrink-0'
 
 interface PaletteItemProps {
   icon: ReactNode

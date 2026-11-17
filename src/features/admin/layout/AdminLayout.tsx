@@ -61,7 +61,7 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
               onClick={onNavigate}
               className={({ isActive }) =>
                 cn(
-                  'flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium transition-colors',
+                  'flex h-11 items-center gap-3 rounded-md px-3 text-sm font-medium transition-colors',
                   isActive
                     ? 'border border-border-strong bg-surface-hover text-foreground'
                     : 'border border-transparent text-muted hover:bg-surface-hover/60 hover:text-foreground',
@@ -92,7 +92,7 @@ export function AdminLayout() {
   return (
     <div className="flex min-h-dvh">
       <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col gap-6 border-r border-border bg-background-alt/50 p-4 lg:flex">
-        <Link to="/admin" aria-label="Painel — visão geral" className="rounded-xl px-1 py-1">
+        <Link to="/admin" aria-label="Painel — visão geral" className="rounded-md px-1 py-1">
           <Logo withName />
         </Link>
         <SidebarNav />

@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, type ComponentType, type LazyExoticComponent
 import { usePageMeta } from '@/hooks/use-page-meta'
 import { useMessages } from '@/i18n'
 import { Hero } from './Hero'
+import { SectionIndex } from './SectionIndex'
 
 type SectionModule = () => Promise<{ default: ComponentType }>
 
@@ -46,6 +47,7 @@ export function HomePage() {
   return (
     <>
       <Hero />
+      <SectionIndex />
       {sections.map((Section, index) => (
         <Suspense key={index} fallback={<div className="min-h-[60vh]" aria-hidden="true" />}>
           <Section />

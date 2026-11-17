@@ -32,12 +32,13 @@ export function ProjectsSection() {
       index={5}
       eyebrow={t.projects.eyebrow}
       title={t.projects.title}
+      highlight={t.projects.titleHighlight}
       description={t.projects.description}
     >
       {primary ? <PrimaryProject project={primary} repo={findRepo(primary.repoName)} /> : null}
 
       {others.length > 0 ? (
-        <ul className="mt-6 grid gap-6 lg:grid-cols-2">
+        <ul className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {others.map((project, index) => (
             <li key={project.id}>
               <Reveal delay={index * 0.08} className="h-full">

@@ -137,7 +137,7 @@ export function GithubPage() {
                 {state.data.status === 'error' && state.data.errorMessage ? (
                   <p
                     role="alert"
-                    className="mt-4 flex items-start gap-2.5 rounded-xl border border-danger/30 bg-danger/10 px-4 py-3 text-sm text-foreground"
+                    className="mt-4 flex items-start gap-2.5 rounded-md border border-danger/30 bg-danger/10 px-4 py-3 text-sm text-foreground"
                   >
                     <CircleAlert
                       aria-hidden="true"

@@ -38,7 +38,7 @@ export const ptBR = {
       contact: 'Contato',
     },
     cta: 'Vamos conversar',
-    homeLink: 'Erick Moura — página inicial',
+    homeLinkSuffix: 'página inicial',
     openMenu: 'Abrir menu',
     closeMenu: 'Fechar menu',
     menuTitle: 'Menu',
@@ -47,7 +47,30 @@ export const ptBR = {
     toggleTheme: 'Alternar entre tema claro e escuro',
   },
 
+  sectionIndex: {
+    label: 'Atalhos para as seções',
+    title: 'Índice',
+    description: 'Vá direto ao que interessa.',
+    items: {
+      about: { label: 'Sobre', hint: 'Quem eu sou e como trabalho' },
+      experience: { label: 'Experiência', hint: 'Trajetória profissional' },
+      skills: { label: 'Skills', hint: 'Tecnologias por contexto de uso' },
+      solutions: { label: 'Soluções', hint: 'Automações, IA e integrações' },
+      projects: { label: 'Projetos', hint: 'Estudos de caso e repositórios' },
+      github: { label: 'GitHub', hint: 'Atividade e linguagens' },
+      education: { label: 'Formação', hint: 'Base acadêmica' },
+      contact: { label: 'Contato', hint: 'Vamos conversar' },
+    },
+  },
+
   hero: {
+    metaLeft: 'Portfólio profissional',
+    metaRight: 'Full Stack · Automações · IA',
+    photoAlt:
+      'Erick Moura de óculos e headphone, concentrado diante do computador em um ambiente com iluminação azul',
+    photoTag: 'Fig. 01',
+    photoCaption: 'Erick Moura',
+    photoCaptionRight: 'Analista de Soluções',
     greeting: 'Olá, eu sou',
     rolesLabel: 'Atuação:',
     ctaProjects: 'Explorar projetos',
@@ -59,18 +82,22 @@ export const ptBR = {
     github: 'GitHub de Erick Moura',
     linkedin: 'LinkedIn de Erick Moura',
     email: 'Enviar e-mail para Erick Moura',
-    editorFile: 'developer.ts',
-    workflowTitle: 'fluxo de atendimento',
-    workflowStatus: 'ativo',
-    workflowNodes: ['Webhook', 'n8n', 'Agente de IA', 'CRM'],
-    visualDescription:
-      'Ilustração: um editor com código TypeScript descrevendo Erick Moura e um fluxo de automação que conecta webhook, n8n, agente de IA e CRM.',
   },
 
   about: {
     eyebrow: 'sobre',
     title: 'Tecnologia aplicada a problemas reais',
+    titleHighlight: 'problemas reais',
     highlightsTitle: 'Onde eu atuo',
+    factsTitle: 'Ficha',
+    facts: {
+      name: 'Nome',
+      role: 'Atuação',
+      education: 'Formação',
+      focus: 'Foco',
+      focusValue: 'Web, automações e Inteligência Artificial',
+      projects: 'Projetos',
+    },
     highlights: [
       {
         id: 'fullstack',
@@ -124,6 +151,7 @@ export const ptBR = {
   experience: {
     eyebrow: 'experiência',
     title: 'Trajetória profissional',
+    titleHighlight: 'profissional',
     description:
       'Da gestão de operações à construção de soluções: o fio condutor é resolver problemas reais.',
     current: 'Atual',
@@ -136,8 +164,10 @@ export const ptBR = {
   skills: {
     eyebrow: 'skills',
     title: 'Tecnologias e ferramentas',
+    titleHighlight: 'ferramentas',
     description: 'Organizadas pelo contexto real de uso — sem barras de porcentagem arbitrárias.',
     filterLabel: 'Filtrar tecnologias',
+    legendLabel: 'Legenda dos níveis',
     all: 'Todas',
     learningFilter: 'Em aprendizado',
     categories: {
@@ -158,6 +188,7 @@ export const ptBR = {
   solutions: {
     eyebrow: 'soluções',
     title: 'Soluções que desenvolvo',
+    titleHighlight: 'desenvolvo',
     description:
       'Minha atuação vai além da interface: conecto sistemas, automatizo processos e coloco a IA para trabalhar dentro da operação.',
     tabsLabel: 'Áreas de solução',
@@ -236,9 +267,11 @@ export const ptBR = {
   projects: {
     eyebrow: 'projetos',
     title: 'Projetos em destaque',
+    titleHighlight: 'em destaque',
     description:
-      'Código aberto no meu GitHub, com o contexto do desafio e das decisões de cada projeto.',
+      'Projetos autorais com código aberto e produtos em que colaborei, com o contexto do desafio e das decisões de cada um.',
     primaryLabel: 'Projeto principal',
+    ownLabel: 'Autoral',
     caseStudy: 'Ver estudo do projeto',
     caseStudyOf: (project: string) => `Ver estudo do projeto ${project}`,
     codeOf: (project: string) => `Código de ${project} no GitHub`,
@@ -286,6 +319,7 @@ export const ptBR = {
   github: {
     eyebrow: 'github',
     title: 'Atividade no GitHub',
+    titleHighlight: 'GitHub',
     description: 'Dados públicos obtidos da API oficial do GitHub — nada aqui é simulado.',
     stats: {
       repos: 'Repositórios públicos',
@@ -349,6 +383,7 @@ export const ptBR = {
   education: {
     eyebrow: 'formação',
     title: 'Formação',
+    titleHighlight: 'Formação',
     description: 'Base acadêmica em paralelo à prática profissional.',
     kinds: {
       degree: 'Graduação',
@@ -367,6 +402,7 @@ export const ptBR = {
   contact: {
     eyebrow: 'contato',
     title: 'Vamos construir algo incrível juntos?',
+    titleHighlight: 'algo incrível',
     description:
       'Está desenvolvendo um projeto, buscando um profissional de tecnologia ou precisa automatizar algum processo? Vamos conversar.',
     fields: {

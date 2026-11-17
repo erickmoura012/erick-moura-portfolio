@@ -21,7 +21,7 @@ function EducationHeader({ item }: { item: EducationItem }) {
 
   return (
     <div className="flex items-start gap-4">
-      <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-xl border border-border bg-background-alt text-accent">
+      <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-md border border-border-strong text-electric">
         <Icon aria-hidden="true" className="size-5" />
       </span>
       <div className="min-w-0 flex-1">
@@ -36,7 +36,7 @@ function EducationHeader({ item }: { item: EducationItem }) {
           <span>{item.institution}</span>
           {item.location ? (
             <span className="inline-flex items-center gap-1.5">
-              <MapPin aria-hidden="true" className="size-3.5 text-accent" />
+              <MapPin aria-hidden="true" className="size-3.5 text-subtle" />
               {item.location}
             </span>
           ) : null}
@@ -57,13 +57,17 @@ function EducationCard({ item }: { item: EducationItem }) {
       ) : null}
       {item.topics.length > 0 ? (
         <>
-          <h4 className="mt-6 mb-3 font-mono text-xs tracking-wider text-subtle uppercase">
-            {t.education.topicsLabel}
-          </h4>
-          <ul className="flex flex-wrap gap-2">
+          <h4 className="mt-7 mb-3 label-mono text-subtle">{t.education.topicsLabel}</h4>
+          <ul className="grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
             {item.topics.map((topic) => (
-              <li key={topic}>
-                <Badge variant="accent">{topic}</Badge>
+              <li
+                key={topic}
+                className="flex gap-3 border-b border-border py-2.5 text-sm leading-relaxed text-muted"
+              >
+                <span aria-hidden="true" className="mt-px font-mono text-xs text-electric">
+                  →
+                </span>
+                {topic}
               </li>
             ))}
           </ul>
@@ -72,7 +76,7 @@ function EducationCard({ item }: { item: EducationItem }) {
       {item.credentialUrl ? (
         <ExternalLink
           href={item.credentialUrl}
-          className="mt-5 inline-flex h-11 items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-foreground"
+          className="mt-5 inline-flex h-11 items-center gap-1 text-sm font-medium text-foreground underline decoration-border-strong underline-offset-[6px] transition-colors hover:decoration-electric"
         >
           {t.education.credential}
           <ArrowUpRight aria-hidden="true" className="size-4" />
@@ -94,6 +98,7 @@ export function EducationSection() {
       index={7}
       eyebrow={t.education.eyebrow}
       title={t.education.title}
+      highlight={t.education.titleHighlight}
       description={t.education.description}
     >
       <ul className="grid gap-6">
@@ -109,9 +114,7 @@ export function EducationSection() {
       {/* Cursos e certificações só aparecem quando há itens confirmados cadastrados. */}
       {courses.length > 0 ? (
         <div className="mt-12">
-          <h3 className="mb-5 font-mono text-xs tracking-wider text-subtle uppercase">
-            {t.education.coursesTitle}
-          </h3>
+          <h3 className="mb-5 label-mono text-subtle">{t.education.coursesTitle}</h3>
           <ul className="grid gap-6 md:grid-cols-2">
             {courses.map((item, index) => (
               <li key={item.id}>

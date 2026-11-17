@@ -1,5 +1,5 @@
 import type { GithubRepo } from '@shared/github'
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router'
 import { Reveal } from '@/components/animations/Reveal'
 import { Badge } from '@/components/ui/badge'
@@ -15,13 +15,17 @@ interface ProjectProps {
   repo: GithubRepo | null
 }
 
-function CaseStudyLink({ project }: { project: Project }) {
+function CaseStudyLink({ project, row = false }: { project: Project; row?: boolean }) {
   const t = useMessages()
   return (
     <Link
       to={`/projetos/${project.slug}`}
       aria-label={t.projects.caseStudyOf(project.title)}
-      className="group/link inline-flex h-11 items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-foreground"
+      className={
+        row
+          ? 'group/link flex h-12 items-center justify-between gap-2 border-t border-border px-5 text-sm font-medium text-foreground transition-colors hover:bg-surface-hover focus-visible:bg-surface-hover sm:px-6'
+          : 'group/link inline-flex h-11 items-center gap-1.5 text-sm font-medium text-foreground underline decoration-border-strong underline-offset-[6px] transition-colors hover:decoration-electric'
+      }
     >
       {t.projects.caseStudy}
       <ArrowRight
@@ -32,56 +36,69 @@ function CaseStudyLink({ project }: { project: Project }) {
   )
 }
 
+/** Selo que diferencia projetos autorais de colaborações. */
+export function RoleBadge({ project }: { project: Project }) {
+  const t = useMessages()
+  return project.role ? (
+    <Badge variant="cyan" mono>
+      {project.role}
+    </Badge>
+  ) : (
+    <Badge mono>{t.projects.ownLabel}</Badge>
+  )
+}
+
 /** Apresentação de destaque do projeto principal. */
 export function PrimaryProject({ project, repo }: ProjectProps) {
   const t = useMessages()
 
   return (
     <Reveal>
-      <Card className="grid overflow-hidden lg:grid-cols-[1.05fr_0.95fr]">
+      <Card className="grid overflow-hidden lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
         <div className="flex flex-col p-6 sm:p-10">
-          <Badge variant="cyan" mono className="self-start">
-            {t.projects.primaryLabel}
-          </Badge>
-          <h3 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl">
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge variant="accent" mono>
+              {t.projects.primaryLabel}
+            </Badge>
+            <RoleBadge project={project} />
+          </div>
+          <h3 className="mt-6 text-4xl font-semibold text-foreground sm:text-5xl">
             {project.title}
           </h3>
-          <p className="mt-2 font-medium text-accent">{project.tagline}</p>
-          <p className="mt-4 leading-relaxed text-muted">{project.description}</p>
+          <p className="mt-3 font-display text-lg text-foreground/80">{project.tagline}</p>
+          <p className="mt-5 leading-relaxed text-muted">{project.description}</p>
 
-          <ul className="mt-6 flex flex-col gap-2.5">
-            {project.highlights.map((highlight) => (
-              <li key={highlight} className="flex gap-3 text-sm leading-relaxed text-muted">
-                <Check aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-cyan" />
-                {highlight}
-              </li>
-            ))}
-          </ul>
+          {project.highlights.length > 0 ? (
+            <ul className="mt-6 border-t border-border">
+              {project.highlights.map((highlight) => (
+                <li
+                  key={highlight}
+                  className="flex gap-3 border-b border-border py-2.5 text-sm leading-relaxed text-muted"
+                >
+                  <span aria-hidden="true" className="mt-px font-mono text-xs text-electric">
+                    →
+                  </span>
+                  {highlight}
+                </li>
+              ))}
+            </ul>
+          ) : null}
 
-          <ul aria-label={t.projects.page.stack} className="mt-6 flex flex-wrap gap-2">
-            {project.stack.map((tech) => (
-              <li key={tech}>
-                <Badge mono>{tech}</Badge>
-              </li>
-            ))}
-          </ul>
+          <p className="mt-6 font-mono text-xs leading-relaxed text-subtle">
+            <span className="sr-only">{t.projects.page.stack}: </span>
+            {project.stack.join('  /  ')}
+          </p>
 
-          {repo ? <RepoMeta repo={repo} className="mt-6" /> : null}
+          {repo ? <RepoMeta repo={repo} className="mt-4" /> : null}
 
-          <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2">
+          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2">
             <ProjectLinks project={project} />
-            <span className="ml-1">
-              <CaseStudyLink project={project} />
-            </span>
+            <CaseStudyLink project={project} />
           </div>
         </div>
 
-        <div className="relative flex items-center border-t border-border bg-background-alt/50 p-6 sm:p-10 lg:border-t-0 lg:border-l">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-[radial-gradient(closest-side,var(--glow-blue),transparent)]"
-          />
-          <div className="relative w-full">
+        <div className="flex items-center border-t border-border bg-background-alt/60 p-6 sm:p-10 lg:border-t-0 lg:border-l">
+          <div className="crop-marks w-full">
             <ProjectVisual project={project} />
           </div>
         </div>
@@ -94,30 +111,33 @@ export function ProjectCard({ project, repo }: ProjectProps) {
   const t = useMessages()
 
   return (
-    <Card interactive className="group flex h-full flex-col p-6 sm:p-7">
-      <div className="mb-6 transition-transform duration-500 group-hover:-translate-y-0.5">
-        <ProjectVisual project={project} />
+    <Card interactive className="flex h-full flex-col overflow-hidden">
+      <div className="border-b border-border bg-background-alt/60 p-4">
+        <ProjectVisual project={project} sizes="(min-width: 1024px) 380px, calc(100vw - 4.5rem)" />
       </div>
-      <h3 className="text-2xl font-semibold text-foreground">{project.title}</h3>
-      <p className="mt-1.5 text-sm font-medium text-accent">{project.tagline}</p>
-      <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
 
-      <ul aria-label={t.projects.page.stack} className="mt-5 flex flex-wrap gap-2">
-        {project.stack.slice(0, 6).map((tech) => (
-          <li key={tech}>
-            <Badge mono>{tech}</Badge>
-          </li>
-        ))}
-      </ul>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="text-2xl font-semibold text-foreground">{project.title}</h3>
+          <RoleBadge project={project} />
+        </div>
+        <p className="mt-1.5 text-sm font-medium text-foreground/80">{project.tagline}</p>
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
 
-      {repo ? <RepoMeta repo={repo} className="mt-5" /> : null}
+        <p className="mt-5 font-mono text-xs leading-relaxed text-subtle">
+          <span className="sr-only">{t.projects.page.stack}: </span>
+          {project.stack.slice(0, 5).join('  /  ')}
+        </p>
 
-      <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-border pt-5">
-        <ProjectLinks project={project} size="sm" />
-        <span className="ml-auto">
-          <CaseStudyLink project={project} />
-        </span>
+        {repo ? <RepoMeta repo={repo} className="mt-4" /> : null}
+
+        {project.demoUrl || project.repoUrl ? (
+          <div className="mt-5 flex flex-wrap items-center gap-2 [&>a]:flex-1">
+            <ProjectLinks project={project} size="sm" />
+          </div>
+        ) : null}
       </div>
+      <CaseStudyLink project={project} row />
     </Card>
   )
 }

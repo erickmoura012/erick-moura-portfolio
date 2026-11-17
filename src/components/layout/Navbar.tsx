@@ -1,11 +1,10 @@
-import { Search } from 'lucide-react'
+import { ArrowUpRight, Search } from 'lucide-react'
 import { m } from 'motion/react'
 import { Link, useLocation } from 'react-router'
 import { useUiState } from '@/app/providers/ui-state'
 import { NAV_SECTIONS, SECTION_IDS, type NavSectionKey } from '@/app/sections'
 import { Logo } from '@/components/common/Logo'
 import { ThemeToggle } from '@/components/common/ThemeToggle'
-import { Button } from '@/components/ui/button'
 import { useActiveSection } from '@/hooks/use-active-section'
 import { useMessages } from '@/i18n'
 import { cn } from '@/lib/utils'
@@ -29,39 +28,45 @@ export function Navbar() {
   const { setCommandPaletteOpen } = useUiState()
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-4">
-      <div className="pointer-events-auto mx-auto flex h-14 max-w-6xl items-center justify-between gap-2 rounded-full border border-border glass pr-2 pl-3 shadow-card sm:h-16 sm:pr-3 sm:pl-4">
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-border bg-background/92 backdrop-blur-md">
+      <div className="container-page flex h-16 items-center justify-between gap-4 frame-x">
         <Link
           to={{ pathname: '/', hash: `#${SECTION_IDS.home}` }}
-          aria-label={t.nav.homeLink}
-          className="rounded-full"
+          className="flex shrink-0 items-center gap-3 rounded-md"
         >
           <Logo />
+          <span className="sr-only leading-tight sm:not-sr-only sm:block">
+            <span className="block font-display text-[0.9375rem] font-semibold text-foreground">
+              Erick Moura
+            </span>{' '}
+            <span className="block label-mono text-[0.625rem] text-subtle">Full Stack · IA</span>
+            <span className="sr-only"> — {t.nav.homeLinkSuffix}</span>
+          </span>
         </Link>
 
-        <nav aria-label={t.nav.label} className="hidden lg:block">
-          <ul className="flex items-center gap-1">
+        <nav aria-label={t.nav.label} className="hidden h-full lg:block">
+          <ul className="flex h-full items-stretch">
             {NAV_SECTIONS.map((key) => {
               const isActive = active === key
               return (
-                <li key={key}>
+                <li key={key} className="flex">
                   <Link
                     to={{ pathname: '/', hash: `#${SECTION_IDS[key]}` }}
                     aria-current={isActive ? 'location' : undefined}
                     className={cn(
-                      'relative inline-flex h-10 items-center rounded-full px-3.5 text-sm font-medium transition-colors',
-                      isActive ? 'text-foreground' : 'text-muted hover:text-foreground',
+                      'relative flex items-center px-3 text-sm font-medium transition-colors xl:px-4',
+                      isActive ? 'text-foreground' : 'text-foreground/70 hover:text-foreground',
                     )}
                   >
+                    {t.nav.items[key]}
                     {isActive ? (
                       <m.span
-                        layoutId="nav-active-pill"
+                        layoutId="nav-active-bar"
                         aria-hidden="true"
-                        className="absolute inset-0 rounded-full border border-border-strong bg-surface-hover/80"
-                        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                        className="absolute inset-x-3 -bottom-px h-0.5 bg-electric xl:inset-x-4"
+                        transition={{ type: 'spring', stiffness: 420, damping: 36 }}
                       />
                     ) : null}
-                    <span className="relative">{t.nav.items[key]}</span>
                   </Link>
                 </li>
               )
@@ -69,26 +74,31 @@ export function Navbar() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1.5">
           <button
             type="button"
             onClick={() => setCommandPaletteOpen(true)}
             aria-keyshortcuts="Control+K Meta+K"
-            className="inline-flex h-10 items-center gap-2 rounded-full px-2.5 text-sm text-muted transition-colors hover:bg-surface-hover hover:text-foreground"
+            className="inline-flex h-10 items-center gap-2 rounded-md border border-border px-3 text-sm text-foreground/80 transition-colors hover:border-border-strong hover:text-foreground"
           >
-            <Search aria-hidden="true" className="size-[1.125rem]" />
-            <span className="sr-only">{t.nav.search}</span>
+            <Search aria-hidden="true" className="size-4" />
+            <span className="sr-only xl:not-sr-only">Buscar</span>
+            <span className="sr-only"> e navegar</span>
             <kbd
               aria-hidden="true"
-              className="hidden rounded-md border border-border px-1.5 py-0.5 font-mono text-[0.6875rem] text-subtle xl:inline"
+              className="hidden rounded border border-border px-1.5 py-0.5 font-mono text-[0.625rem] text-subtle 2xl:inline"
             >
               Ctrl K
             </kbd>
           </button>
           <ThemeToggle />
-          <Button asChild size="sm" className="ml-1 hidden h-10 sm:inline-flex">
-            <Link to={{ pathname: '/', hash: `#${SECTION_IDS.contact}` }}>{t.nav.cta}</Link>
-          </Button>
+          <Link
+            to={{ pathname: '/', hash: `#${SECTION_IDS.contact}` }}
+            className="ml-1 hidden h-10 items-center gap-1.5 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover sm:inline-flex"
+          >
+            {t.nav.cta}
+            <ArrowUpRight aria-hidden="true" className="size-4" />
+          </Link>
           <MobileMenu active={active} />
         </div>
       </div>

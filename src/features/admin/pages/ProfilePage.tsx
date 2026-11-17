@@ -70,9 +70,9 @@ export function ProfilePage() {
 
       {profile.isPending ? (
         <div role="status" aria-label="Carregando" className="flex flex-col gap-4">
-          <Skeleton className="h-12 rounded-xl" />
-          <Skeleton className="h-40 rounded-xl" />
-          <Skeleton className="h-12 rounded-xl" />
+          <Skeleton className="h-12 rounded-md" />
+          <Skeleton className="h-40 rounded-md" />
+          <Skeleton className="h-12 rounded-md" />
         </div>
       ) : profile.isError || !initialValues ? (
         <ErrorState message={describeError(profile.error)} onRetry={() => void profile.refetch()} />
@@ -81,7 +81,7 @@ export function ProfilePage() {
           {isStored ? null : (
             <p
               role="status"
-              className="mb-5 flex items-start gap-2.5 rounded-xl border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-foreground"
+              className="mb-5 flex items-start gap-2.5 rounded-md border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-foreground"
             >
               <Info aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-accent" />O perfil
               ainda não foi salvo no banco. Os campos abaixo trazem o conteúdo estático do site; ao

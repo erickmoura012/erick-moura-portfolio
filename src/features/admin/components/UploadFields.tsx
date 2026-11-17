@@ -66,7 +66,7 @@ function UploadButton({
       <label
         htmlFor={id}
         className={cn(
-          'inline-flex h-10 cursor-pointer items-center gap-2 self-start rounded-full border border-border-strong bg-surface/60 px-4 text-sm font-medium text-foreground transition-colors hover:border-accent/60 hover:bg-surface-hover',
+          'inline-flex h-10 cursor-pointer items-center gap-2 self-start rounded-md border border-border-strong bg-surface/60 px-4 text-sm font-medium text-foreground transition-colors hover:border-accent/60 hover:bg-surface-hover',
           'focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-cyan',
           blocked && 'pointer-events-none opacity-50',
         )}
@@ -124,7 +124,7 @@ export function ScreenshotsField({ id, value, onChange }: ScreenshotsFieldProps)
           {value.map((screenshot, index) => (
             <li
               key={screenshot.src}
-              className="flex flex-col gap-3 rounded-xl border border-border bg-background-alt/50 p-3 sm:flex-row sm:items-center"
+              className="flex flex-col gap-3 rounded-md border border-border bg-background-alt/50 p-3 sm:flex-row sm:items-center"
             >
               <img
                 src={screenshot.src}
@@ -192,7 +192,7 @@ export function FileUrlField({ id, value, onChange }: FileUrlFieldProps) {
   return (
     <div className="flex flex-col gap-3">
       {value ? (
-        <div className="flex flex-wrap items-center gap-3 rounded-xl border border-border bg-background-alt/50 px-4 py-3">
+        <div className="flex flex-wrap items-center gap-3 rounded-md border border-border bg-background-alt/50 px-4 py-3">
           <FileText aria-hidden="true" className="size-5 shrink-0 text-accent" />
           <a
             href={value}

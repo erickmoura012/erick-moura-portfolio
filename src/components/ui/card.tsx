@@ -11,21 +11,17 @@ export function trackPointer(event: PointerEvent<HTMLElement>): void {
 }
 
 export interface CardProps extends ComponentProps<'div'> {
-  /** Adiciona realce que acompanha o cursor e elevação no hover. */
+  /** Realça o contorno no hover (para cards clicáveis ou com ações). */
   interactive?: boolean
 }
 
-export function Card({ className, interactive = false, onPointerMove, ...props }: CardProps) {
+/** Superfície plana com contorno fino — sem sombra nem vidro. */
+export function Card({ className, interactive = false, ...props }: CardProps) {
   return (
     <div
-      onPointerMove={(event) => {
-        if (interactive) trackPointer(event)
-        onPointerMove?.(event)
-      }}
       className={cn(
-        'rounded-card border border-border bg-surface/60 shadow-card',
-        interactive &&
-          'spotlight transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-border-strong',
+        'rounded-card border border-border bg-surface/50',
+        interactive && 'transition-colors duration-200 hover:border-border-strong',
         className,
       )}
       {...props}

@@ -26,27 +26,27 @@ function ContactFormFallback() {
       </div>
       <Skeleton className="h-[4.25rem]" />
       <Skeleton className="h-44" />
-      <Skeleton className="ml-auto h-12 w-44 rounded-full" />
+      <Skeleton className="ml-auto h-12 w-44 rounded-md" />
     </div>
   )
 }
 
 const channelClass =
-  'spotlight group border-border bg-surface/60 hover:border-border-strong flex items-center gap-4 rounded-2xl border p-4 transition-colors'
+  'group flex items-center gap-4 px-5 py-5 transition-colors hover:bg-surface-hover focus-visible:bg-surface-hover'
 
 function ChannelBody({ icon, title, hint }: { icon: ReactNode; title: string; hint: string }) {
   return (
     <>
-      <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl border border-border bg-background-alt text-accent [&_svg]:size-5">
+      <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-md border border-border text-foreground transition-colors group-hover:border-electric group-hover:text-electric [&_svg]:size-[1.125rem]">
         {icon}
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block font-medium text-foreground">{title}</span>
-        <span className="block truncate text-sm text-muted">{hint}</span>
+        <span className="block font-display text-lg font-semibold text-foreground">{title}</span>
+        <span className="block text-sm break-words text-muted">{hint}</span>
       </span>
       <ArrowUpRight
         aria-hidden="true"
-        className="size-4 shrink-0 text-subtle transition-colors group-hover:text-foreground"
+        className="size-5 shrink-0 text-subtle transition-[color,transform] duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-electric"
       />
     </>
   )
@@ -62,14 +62,13 @@ export function ContactSection() {
       index={8}
       eyebrow={t.contact.eyebrow}
       title={t.contact.title}
+      highlight={t.contact.titleHighlight}
       description={t.contact.description}
     >
-      <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-12">
         <Reveal>
-          <h3 className="mb-5 font-mono text-xs tracking-wider text-subtle uppercase">
-            {t.contact.channelsTitle}
-          </h3>
-          <ul className="flex flex-col gap-3">
+          <h3 className="mb-4 label-mono text-subtle">{t.contact.channelsTitle}</h3>
+          <ul className="divide-y divide-border overflow-hidden rounded-card border border-border">
             <li>
               <ExternalLink href={profile.linkedinUrl} className={channelClass}>
                 <ChannelBody
@@ -110,7 +109,7 @@ export function ContactSection() {
               </Suspense>
             ) : (
               <div className="flex min-h-64 flex-col items-start justify-center gap-4">
-                <span className="inline-flex size-12 items-center justify-center rounded-xl border border-warning/30 bg-warning/10 text-warning">
+                <span className="inline-flex size-12 items-center justify-center rounded-md border border-warning/30 bg-warning/10 text-warning">
                   <Wrench aria-hidden="true" className="size-5" />
                 </span>
                 <h3 className="text-xl font-semibold text-foreground">

@@ -49,14 +49,14 @@ export function Screenshot({
 
 function BrowserFrame({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-border-strong bg-background-alt shadow-float">
-      <div className="flex items-center gap-3 border-b border-border px-3.5 py-2.5">
-        <div aria-hidden="true" className="flex gap-1.5">
-          <span className="size-2.5 rounded-full bg-border-strong" />
-          <span className="size-2.5 rounded-full bg-border-strong" />
-          <span className="size-2.5 rounded-full bg-border-strong" />
+    <div className="overflow-hidden rounded-md border border-border-strong bg-background-alt">
+      <div className="flex items-center gap-3 border-b border-border px-3 py-2">
+        <div aria-hidden="true" className="flex gap-1">
+          <span className="size-2 rounded-[2px] bg-border-strong" />
+          <span className="size-2 rounded-[2px] bg-border-strong" />
+          <span className="size-2 rounded-[2px] bg-electric" />
         </div>
-        <span className="min-w-0 flex-1 truncate rounded-md border border-border bg-surface/70 px-2.5 py-1 font-mono text-[0.6875rem] text-subtle">
+        <span className="min-w-0 flex-1 truncate font-mono text-[0.6875rem] text-subtle">
           {label}
         </span>
       </div>
@@ -69,22 +69,31 @@ function BrowserFrame({ label, children }: { label: string; children: React.Reac
  * Visual do projeto: a captura real da aplicação quando existe; caso contrário,
  * a própria arquitetura do projeto apresentada como um painel de código.
  */
-export function ProjectVisual({ project, priority }: { project: Project; priority?: boolean }) {
+export function ProjectVisual({
+  project,
+  priority,
+  sizes,
+}: {
+  project: Project
+  priority?: boolean
+  sizes?: string
+}) {
   const screenshot = project.screenshots[0]
   const label = (project.demoUrl ?? project.repoUrl ?? project.title).replace(/^https?:\/\//, '')
+  const lines = project.architecture.length > 0 ? project.architecture : [project.tagline]
 
   if (screenshot) {
     return (
       <BrowserFrame label={label}>
-        <Screenshot screenshot={screenshot} priority={priority} />
+        <Screenshot screenshot={screenshot} priority={priority} sizes={sizes} />
       </BrowserFrame>
     )
   }
 
   return (
     <BrowserFrame label={label}>
-      <ul className="flex flex-col gap-3 p-5 font-mono text-xs leading-relaxed sm:text-[0.8125rem]">
-        {project.architecture.map((line, index) => (
+      <ul className="flex aspect-[16/10] flex-col gap-3 overflow-hidden [mask-image:linear-gradient(to_bottom,#000_80%,transparent)] p-5 font-mono text-xs leading-relaxed sm:text-[0.8125rem]">
+        {lines.map((line, index) => (
           <li key={line} className="flex gap-3">
             <span aria-hidden="true" className="w-4 shrink-0 text-right text-subtle select-none">
               {index + 1}

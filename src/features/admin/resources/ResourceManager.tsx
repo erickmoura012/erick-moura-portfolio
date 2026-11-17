@@ -113,7 +113,7 @@ export function ResourceManager({ config }: { config: ResourceConfig }) {
       {list.isPending ? (
         <div role="status" aria-label="Carregando" className="flex flex-col gap-3">
           {[0, 1, 2, 3].map((item) => (
-            <Skeleton key={item} className="h-16 rounded-2xl" />
+            <Skeleton key={item} className="h-16 rounded-lg" />
           ))}
         </div>
       ) : list.isError ? (

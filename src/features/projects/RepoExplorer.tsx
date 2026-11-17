@@ -35,7 +35,7 @@ function RepoCard({ repo, project }: RepoCardProps) {
         <h4 className="min-w-0 text-base font-semibold">
           <ExternalLink
             href={repo.htmlUrl}
-            className="inline-flex max-w-full items-center gap-1.5 text-foreground transition-colors hover:text-accent"
+            className="inline-flex max-w-full items-center gap-1.5 font-mono text-[0.9375rem] text-foreground transition-colors hover:text-electric"
           >
             <GithubIcon className="size-4 shrink-0" />
             <span className="truncate">{repo.name}</span>
@@ -53,13 +53,9 @@ function RepoCard({ repo, project }: RepoCardProps) {
       </p>
 
       {repo.topics.length > 0 ? (
-        <ul className="mt-4 flex flex-wrap gap-1.5">
+        <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-cyan">
           {repo.topics.slice(0, 5).map((topic) => (
-            <li key={topic}>
-              <Badge variant="accent" mono>
-                {topic}
-              </Badge>
-            </li>
+            <li key={topic}>#{topic}</li>
           ))}
         </ul>
       ) : null}
@@ -72,7 +68,7 @@ function RepoCard({ repo, project }: RepoCardProps) {
             <ExternalLink
               href={repo.homepage}
               aria-label={t.projects.demoOf(repo.name)}
-              className="inline-flex h-9 items-center gap-1 font-medium text-accent transition-colors hover:text-foreground"
+              className="inline-flex h-9 items-center gap-1 font-medium text-foreground underline decoration-border-strong underline-offset-4 transition-colors hover:decoration-electric"
             >
               {t.common.demo}
               <ArrowUpRight aria-hidden="true" className="size-3.5" />

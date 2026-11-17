@@ -54,7 +54,7 @@ export function LoginPage() {
 
       <Card className="w-full max-w-sm p-6 sm:p-8">
         <div className="mb-6 flex items-center gap-3">
-          <span className="inline-flex size-10 items-center justify-center rounded-xl border border-border bg-background-alt text-accent">
+          <span className="inline-flex size-10 items-center justify-center rounded-md border border-border bg-background-alt text-accent">
             <Lock aria-hidden="true" className="size-4" />
           </span>
           <div>
@@ -85,7 +85,7 @@ export function LoginPage() {
           {failed ? (
             <p
               role="alert"
-              className="flex items-center gap-2 rounded-xl border border-danger/30 bg-danger/10 px-3.5 py-2.5 text-sm text-danger"
+              className="flex items-center gap-2 rounded-md border border-danger/30 bg-danger/10 px-3.5 py-2.5 text-sm text-danger"
             >
               <CircleAlert aria-hidden="true" className="size-4 shrink-0" />
               {LOGIN_ERROR}

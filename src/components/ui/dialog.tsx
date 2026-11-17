@@ -43,7 +43,7 @@ export function DialogContent({
       <DialogPrimitive.Content
         className={cn(
           'fixed top-1/2 left-1/2 z-50 w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 data-[state=open]:animate-fade-in',
-          'rounded-2xl border border-border-strong bg-background-alt p-6 shadow-float',
+          'rounded-lg border border-border-strong bg-background-alt p-6 shadow-float',
           'max-h-[calc(100dvh-2rem)] scrollbar-thin overflow-y-auto focus:outline-none',
           className,
         )}

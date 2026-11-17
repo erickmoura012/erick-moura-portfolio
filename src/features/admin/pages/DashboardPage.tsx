@@ -102,7 +102,7 @@ function StatLink({
   return (
     <Link to={to} className="group block rounded-card">
       <Card interactive className="flex items-center gap-4 p-5">
-        <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl border border-border bg-background-alt text-accent">
+        <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-md border border-border bg-background-alt text-accent">
           <Icon aria-hidden="true" className="size-5" />
         </span>
         <span className="min-w-0 flex-1">

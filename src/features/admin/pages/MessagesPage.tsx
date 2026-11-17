@@ -94,7 +94,7 @@ export function MessagesPage() {
             aria-pressed={filter === item.id}
             onClick={() => setFilter(item.id)}
             className={cn(
-              'inline-flex h-9 items-center rounded-full border px-4 text-sm font-medium transition-colors',
+              'inline-flex h-9 items-center rounded-md border px-4 text-sm font-medium transition-colors',
               filter === item.id
                 ? 'border-accent/60 bg-accent/15 text-foreground'
                 : 'border-border text-muted hover:text-foreground',
@@ -108,7 +108,7 @@ export function MessagesPage() {
       {list.isPending ? (
         <div role="status" aria-label="Carregando" className="flex flex-col gap-3">
           {[0, 1, 2].map((item) => (
-            <Skeleton key={item} className="h-16 rounded-2xl" />
+            <Skeleton key={item} className="h-16 rounded-lg" />
           ))}
         </div>
       ) : list.isError ? (
@@ -181,7 +181,7 @@ export function MessagesPage() {
               </Badge>
             </div>
 
-            <p className="mt-5 rounded-xl border border-border bg-background/60 p-4 text-sm leading-relaxed break-words whitespace-pre-wrap text-foreground">
+            <p className="mt-5 rounded-md border border-border bg-background/60 p-4 text-sm leading-relaxed break-words whitespace-pre-wrap text-foreground">
               {open.message}
             </p>
 

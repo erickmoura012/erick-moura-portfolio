@@ -32,7 +32,7 @@ function Panel({
 }) {
   return (
     <Card className={cn('flex flex-col p-5 sm:p-6', className)}>
-      <h3 className="font-sans text-base font-semibold tracking-normal text-foreground">{title}</h3>
+      <h3 className="label-mono font-normal text-subtle">{title}</h3>
       {hint ? <p className="mt-1 text-sm text-muted">{hint}</p> : null}
       <div className="mt-5 flex-1">{children}</div>
     </Card>
@@ -42,8 +42,10 @@ function Panel({
 function StatTile({ label, value }: { label: string; value: number }) {
   return (
     <Card className="p-5">
-      <p className="text-sm text-muted">{label}</p>
-      <p className="mt-2 font-sans text-3xl font-semibold text-foreground">{formatNumber(value)}</p>
+      <p className="label-mono text-subtle">{label}</p>
+      <p className="mt-3 font-display text-4xl font-semibold tracking-tight text-foreground tabular-nums">
+        {formatNumber(value)}
+      </p>
     </Card>
   )
 }
@@ -55,7 +57,7 @@ function RecentRepoRow({ repo }: { repo: GithubRepo }) {
       <div className="min-w-0 flex-1">
         <ExternalLink
           href={repo.htmlUrl}
-          className="inline-flex max-w-full items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-accent"
+          className="inline-flex max-w-full items-center gap-1 font-mono text-sm text-foreground transition-colors hover:text-electric"
         >
           <span className="truncate">{repo.name}</span>
           <ArrowUpRight aria-hidden="true" className="size-3.5 shrink-0" />
@@ -161,7 +163,7 @@ function Dashboard({ data }: { data: GithubData }) {
             height={64}
             loading="lazy"
             decoding="async"
-            className="size-16 shrink-0 rounded-2xl border border-border-strong object-cover"
+            className="size-16 shrink-0 rounded-lg border border-border-strong object-cover"
           />
           <div className="min-w-0">
             <p className="truncate font-semibold text-foreground">{user.name ?? user.login}</p>
@@ -210,6 +212,7 @@ export function GithubSection() {
       index={6}
       eyebrow={t.github.eyebrow}
       title={t.github.title}
+      highlight={t.github.titleHighlight}
       description={t.github.description}
     >
       <Reveal>
@@ -242,7 +245,7 @@ export function GithubSection() {
             {result.notice ? (
               <p
                 role="status"
-                className="mb-4 flex items-start gap-2.5 rounded-xl border border-warning/30 bg-warning/10 px-4 py-3 text-sm text-foreground"
+                className="mb-4 flex items-start gap-2.5 rounded-md border border-warning/30 bg-warning/10 px-4 py-3 text-sm text-foreground"
               >
                 <CircleAlert aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-warning" />
                 {t.github.notices[result.notice]}

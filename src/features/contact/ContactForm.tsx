@@ -166,7 +166,7 @@ export function ContactForm() {
       {status.state === 'error' ? (
         <p
           role="alert"
-          className="flex items-start gap-2.5 rounded-xl border border-danger/30 bg-danger/10 px-4 py-3 text-sm text-foreground"
+          className="flex items-start gap-2.5 rounded-md border border-danger/30 bg-danger/10 px-4 py-3 text-sm text-foreground"
         >
           <CircleAlert aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-danger" />
           {t.contact.errors[status.kind]}

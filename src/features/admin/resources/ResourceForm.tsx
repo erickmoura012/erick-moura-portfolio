@@ -221,7 +221,7 @@ export function ResourceForm({
               aria-pressed={showPreview === tab.preview}
               onClick={() => setShowPreview(tab.preview)}
               className={cn(
-                'inline-flex h-9 items-center rounded-full border px-4 text-sm font-medium transition-colors',
+                'inline-flex h-9 items-center rounded-md border px-4 text-sm font-medium transition-colors',
                 showPreview === tab.preview
                   ? 'border-accent/60 bg-accent/15 text-foreground'
                   : 'border-border text-muted hover:text-foreground',
@@ -234,7 +234,7 @@ export function ResourceForm({
       ) : null}
 
       {Preview && showPreview ? (
-        <div className="rounded-2xl border border-dashed border-border bg-background/60 p-4">
+        <div className="rounded-lg border border-dashed border-border bg-background/60 p-4">
           <FormPreview control={control} fields={fields} Preview={Preview} />
         </div>
       ) : null}
@@ -250,7 +250,7 @@ export function ResourceForm({
               <div
                 key={field.name}
                 className={cn(
-                  'flex items-center justify-between gap-4 rounded-xl border border-border px-4 py-3',
+                  'flex items-center justify-between gap-4 rounded-md border border-border px-4 py-3',
                   wide && 'sm:col-span-2',
                 )}
               >

@@ -5,26 +5,25 @@ import { cn } from '@/lib/utils'
 
 export const buttonVariants = cva(
   [
-    'inline-flex shrink-0 items-center justify-center gap-2 rounded-full font-medium whitespace-nowrap',
-    'transition-[color,background-color,border-color,box-shadow,transform] duration-200',
-    'active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50',
+    'group/button inline-flex shrink-0 items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap',
+    'transition-[color,background-color,border-color,transform] duration-200',
+    'active:translate-y-px disabled:pointer-events-none disabled:opacity-50',
     'aria-disabled:pointer-events-none aria-disabled:opacity-50',
     '[&_svg]:size-4 [&_svg]:shrink-0',
   ],
   {
     variants: {
       variant: {
-        primary:
-          'bg-primary text-primary-foreground shadow-[0_10px_28px_-12px_rgb(37_99_235/0.8)] hover:bg-primary-hover hover:shadow-glow',
+        primary: 'bg-primary text-primary-foreground hover:bg-primary-hover',
         secondary:
-          'border border-border-strong bg-surface/60 text-foreground hover:border-accent/60 hover:bg-surface-hover',
+          'border border-border-strong bg-transparent text-foreground hover:border-foreground hover:bg-surface-hover',
         ghost: 'text-muted hover:bg-surface-hover hover:text-foreground',
         danger: 'border border-danger/40 bg-danger/10 text-danger hover:bg-danger/20',
       },
       size: {
-        sm: 'h-9 px-4 text-sm',
+        sm: 'h-9 px-3.5 text-sm',
         md: 'h-11 px-5 text-sm',
-        lg: 'h-12 px-6 text-base',
+        lg: 'h-12 px-6 text-[0.9375rem]',
         icon: 'size-11',
       },
     },

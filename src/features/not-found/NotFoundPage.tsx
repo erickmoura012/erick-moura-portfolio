@@ -14,7 +14,7 @@ export function NotFoundPage() {
   return (
     <div className="container-page flex min-h-dvh flex-col items-center justify-center py-28">
       <div className="w-full max-w-2xl">
-        <div className="overflow-hidden rounded-2xl border border-border-strong bg-background-alt/85 shadow-float">
+        <div className="overflow-hidden rounded-lg border border-border-strong bg-background-alt/85 shadow-float">
           <div
             aria-hidden="true"
             className="flex items-center gap-1.5 border-b border-border px-4 py-3"
