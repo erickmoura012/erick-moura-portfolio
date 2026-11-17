@@ -2,8 +2,9 @@ import type { Project } from '@/types/content'
 
 /**
  * Conteúdo editorial dos projetos em destaque.
- * Tudo aqui foi extraído dos repositórios públicos e de seus READMEs —
- * nada de métricas ou resultados que não possam ser verificados no código.
+ * Projetos autorais: extraídos dos repositórios públicos e de seus READMEs.
+ * Colaborações: descritas apenas com o que o produto publicado mostra.
+ * Nada de métricas ou resultados que não possam ser verificados.
  */
 export const projects: Project[] = [
   {
@@ -11,6 +12,7 @@ export const projects: Project[] = [
     slug: 'finity',
     repoName: 'Finity',
     title: 'Finity',
+    role: null,
     tagline: 'Gerenciador de tarefas no estilo Kanban',
     description:
       'Sistema de gerenciamento de tarefas no estilo Kanban, feito com React e TypeScript, com quadro de arrastar e soltar, projetos, filtros e indicadores.',
@@ -65,10 +67,51 @@ export const projects: Project[] = [
     sortOrder: 1,
   },
   {
+    id: 'clicouai',
+    slug: 'clicouai',
+    repoName: null,
+    title: 'ClicouAí',
+    role: 'Colaborador',
+    tagline: 'Plataforma de venda de fotos de eventos',
+    description:
+      'Plataforma que conecta fotógrafos e participantes de eventos: os fotógrafos publicam as fotos de corridas, festas, formaturas, vaquejadas e esportes, e cada pessoa encontra as suas, paga e baixa o arquivo original.',
+    challenge:
+      'Fazer as milhares de fotos de cada evento chegarem às pessoas certas, com uma compra simples e segura para quem participou e uma forma de publicar e vender que valha a pena para os fotógrafos.',
+    solution:
+      'Aplicação web em produção, construída com Next.js, que organiza as fotos por evento e categoria, permite buscar pelo nome, pela data ou pelo local do evento e conclui a compra com Pix ou cartão, com download imediato do original. Participei do projeto como colaborador.',
+    features: [
+      'Busca de eventos por nome, data ou local',
+      'Categorias como corridas, festas, casamentos, vaquejadas e esportes',
+      'Galeria de fotos e vídeos de cada evento',
+      'Pagamento com Pix ou cartão e download imediato do arquivo original',
+      'Recuperação de compras para quem já comprou',
+      'Área do fotógrafo para publicar e vender as fotos',
+    ],
+    architecture: [],
+    highlights: [
+      'Produto em produção, usado por fotógrafos e participantes de eventos',
+      'Fluxo de compra com Pix ou cartão e entrega imediata do original',
+    ],
+    stack: ['Next.js', 'React'],
+    screenshots: [
+      {
+        src: '/projects/clicouai-1.webp',
+        alt: 'Página inicial do ClicouAí com busca de eventos e fotos de corridas, festas e esportes',
+      },
+    ],
+    repoUrl: null,
+    demoUrl: 'https://www.clicouai.com',
+    category: 'web',
+    featured: true,
+    isPrimary: false,
+    sortOrder: 2,
+  },
+  {
     id: 'menuflow',
     slug: 'menuflow',
     repoName: 'MenuFlow',
     title: 'MenuFlow',
+    role: null,
     tagline: 'Cardápio digital com pedido pelo WhatsApp',
     description:
       'Plataforma de cardápio digital para restaurantes, pizzarias e hamburguerias: o cliente monta o pedido e o envia pronto pelo WhatsApp, e o restaurante gerencia tudo por um painel.',
@@ -107,13 +150,14 @@ export const projects: Project[] = [
     category: 'web',
     featured: true,
     isPrimary: false,
-    sortOrder: 2,
+    sortOrder: 3,
   },
   {
     id: 'rze-sites',
     slug: 'rze-sites',
     repoName: 'rze-sites',
     title: 'RZE Sites',
+    role: null,
     tagline: 'Sistema de gestão para agência de sites',
     description:
       'Sistema de gestão para agência de criação e manutenção de sites: clientes, projetos, hospedagens, mensalidades e fluxo financeiro em um único painel.',
@@ -157,6 +201,6 @@ export const projects: Project[] = [
     category: 'web',
     featured: true,
     isPrimary: false,
-    sortOrder: 3,
+    sortOrder: 4,
   },
 ]
