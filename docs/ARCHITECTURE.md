@@ -107,7 +107,7 @@ Nenhuma credencial de e-mail existe no navegador.
 
 Rota `/admin/*`, fora do layout público e servida a partir de `spa.html` (sem
 pré-renderização). Login por e-mail e senha no Supabase Auth, sem cadastro público.
-A autorização real está no banco: `public.is_admin()` + RLS em todas as tabelas. O
+A autorização real está no banco: `private.is_admin()` (schema não exposto pela API) + RLS em todas as tabelas. O
 bloqueio de rota na interface é apenas experiência de uso.
 
 ## Internacionalização

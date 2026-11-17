@@ -7,18 +7,21 @@ import { AdminApp } from './AdminApp'
 
 const mocks = vi.hoisted(() => {
   /** Query builder mínimo: encadeável e "aguardável", como o do supabase-js. */
-  const createQuery = () => {
+  const adminCheck = vi.fn()
+  const createQuery = (table: string) => {
     const result = { data: [], error: null, count: 0 }
     const builder: Record<string, unknown> = {}
     for (const method of ['select', 'eq', 'gte', 'order', 'limit', 'insert', 'update', 'delete']) {
       builder[method] = () => builder
     }
-    builder.maybeSingle = () => Promise.resolve({ data: null, error: null })
+    builder.maybeSingle = () =>
+      table === 'admin_users' ? adminCheck() : Promise.resolve({ data: null, error: null })
     builder.then = (resolve: (value: typeof result) => unknown) => Promise.resolve(resolve(result))
     return builder
   }
 
   return {
+    adminCheck,
     state: { configured: true },
     client: {
       auth: {
@@ -27,8 +30,7 @@ const mocks = vi.hoisted(() => {
         signInWithPassword: vi.fn(),
         signOut: vi.fn(),
       },
-      rpc: vi.fn(),
-      from: vi.fn(() => createQuery()),
+      from: vi.fn((table: string) => createQuery(table)),
     },
   }
 })
@@ -76,7 +78,7 @@ beforeEach(() => {
   })
   mocks.client.auth.signInWithPassword.mockResolvedValue({ data: {}, error: null })
   mocks.client.auth.signOut.mockResolvedValue({ error: null })
-  mocks.client.rpc.mockResolvedValue({ data: false, error: null })
+  mocks.adminCheck.mockResolvedValue({ data: null, error: null })
 })
 
 describe('AdminApp — configuração', () => {
@@ -111,23 +113,23 @@ describe('AdminApp — controle de acesso', () => {
 
     expect(await screen.findByRole('heading', { name: 'Entrar no painel' })).toBeInTheDocument()
     expect(screen.queryByRole('heading', { name: 'Mensagens' })).not.toBeInTheDocument()
-    expect(mocks.client.rpc).not.toHaveBeenCalled()
+    expect(mocks.adminCheck).not.toHaveBeenCalled()
   })
 
   it('nega acesso e encerra a sessão de quem está autenticado mas não é administrador', async () => {
     mocks.client.auth.getSession.mockResolvedValue({ data: { session }, error: null })
-    mocks.client.rpc.mockResolvedValue({ data: false, error: null })
+    mocks.adminCheck.mockResolvedValue({ data: null, error: null })
     renderAdmin()
 
     expect(await screen.findByRole('heading', { name: 'Acesso negado' })).toBeInTheDocument()
-    expect(mocks.client.rpc).toHaveBeenCalledWith('is_admin')
+    expect(mocks.client.from).toHaveBeenCalledWith('admin_users')
     await waitFor(() => expect(mocks.client.auth.signOut).toHaveBeenCalled())
     expect(screen.queryByRole('heading', { name: 'Visão geral' })).not.toBeInTheDocument()
   })
 
   it('libera o painel para administradores', async () => {
     mocks.client.auth.getSession.mockResolvedValue({ data: { session }, error: null })
-    mocks.client.rpc.mockResolvedValue({ data: true, error: null })
+    mocks.adminCheck.mockResolvedValue({ data: { user_id: 'usuario-1' }, error: null })
     renderAdmin()
 
     expect(await screen.findByRole('heading', { name: 'Visão geral' })).toBeInTheDocument()
@@ -141,7 +143,7 @@ describe('AdminApp — controle de acesso', () => {
 
   it('não libera o painel quando a verificação de permissão falha', async () => {
     mocks.client.auth.getSession.mockResolvedValue({ data: { session }, error: null })
-    mocks.client.rpc.mockResolvedValue({ data: null, error: { message: 'falha de rede' } })
+    mocks.adminCheck.mockResolvedValue({ data: null, error: { message: 'falha de rede' } })
     renderAdmin()
 
     expect(

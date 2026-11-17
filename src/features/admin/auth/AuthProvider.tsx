@@ -11,7 +11,8 @@ interface AuthState {
 const SIGNED_OUT: AuthState = { status: 'signed-out', email: null }
 
 /**
- * Sessão do Supabase Auth + confirmação de administrador via `rpc('is_admin')`.
+ * Sessão do Supabase Auth + confirmação de administrador lendo a própria linha em
+ * `admin_users` (a política de RLS só deixa cada usuário ver a sua).
  * Isto é apenas experiência de uso: quem autoriza de fato cada leitura e
  * escrita são as políticas de RLS do banco.
  */
@@ -39,13 +40,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     try {
       const supabase = await requireSupabase()
-      const { data, error } = await supabase.rpc('is_admin')
+      const { data, error } = await supabase
+        .from('admin_users')
+        .select('user_id')
+        .eq('user_id', userId)
+        .maybeSingle()
       if (pendingUser.current !== userId) return
       pendingUser.current = null
 
       if (error) {
         setState({ status: 'error', email })
-      } else if (data === true) {
+      } else if (data !== null) {
         verifiedUser.current = userId
         setState({ status: 'admin', email })
       } else {

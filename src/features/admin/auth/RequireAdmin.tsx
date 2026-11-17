@@ -5,7 +5,7 @@ import { useAuth } from './auth-context'
 
 /**
  * Guarda de rota do painel. Só melhora a experiência: mesmo que alguém a
- * contorne no navegador, o banco recusa leituras e escritas sem `is_admin()`.
+ * contorne no navegador, o banco recusa leituras e escritas sem `private.is_admin()`.
  */
 export function RequireAdmin() {
   const { status, dismissDenied, retry } = useAuth()
