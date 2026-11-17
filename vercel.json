@@ -6,8 +6,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/admin", "destination": "/spa.html" },
-    { "source": "/admin/:path*", "destination": "/spa.html" }
+    { "source": "/admin", "destination": "/spa" },
+    { "source": "/admin/:path*", "destination": "/spa" }
   ],
   "headers": [
     {
