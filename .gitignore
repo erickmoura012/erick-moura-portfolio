@@ -1,0 +1,35 @@
+# Dependências
+node_modules/
+
+# Builds
+dist/
+dist-ssr/
+*.tsbuildinfo
+stats.html
+
+# Variáveis de ambiente — nunca versionar valores reais
+.env
+.env.*
+!.env.example
+
+# Supabase CLI (estado local)
+supabase/.temp/
+supabase/.branches/
+supabase/.env
+
+# Testes
+coverage/
+playwright-report/
+test-results/
+blob-report/
+
+# Editor / SO
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# Deploy
+.vercel/
