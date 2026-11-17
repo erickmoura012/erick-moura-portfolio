@@ -30,6 +30,8 @@ export default defineConfig(async ({ mode }) => {
     build: {
       target: 'es2022',
       cssMinify: true,
+      // Fontes sempre como arquivo: a CSP (font-src 'self') não aceita data: URIs.
+      assetsInlineLimit: (filePath: string) => (/\.woff2?$/.test(filePath) ? false : undefined),
     },
     test: {
       environment: 'jsdom',
