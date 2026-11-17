@@ -2,6 +2,10 @@ import { z } from 'zod'
 import type { ProjectScreenshot } from '@/types/content'
 import type { FieldConfig, FormValue, FormValues } from './types'
 
+// Sem compilação JIT (new Function): a CSP do site bloqueia eval, e o Zod só a tentaria
+// para acelerar a validação. Precisa rodar antes da criação dos schemas.
+z.config({ jitless: true })
+
 const MAX_LIST_ITEMS = 40
 const MAX_LIST_ITEM_LENGTH = 400
 const MAX_SCREENSHOTS = 8

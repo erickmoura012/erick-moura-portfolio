@@ -1,5 +1,9 @@
 import { z } from 'zod'
 
+// Sem compilação JIT (new Function): a CSP do site bloqueia eval, e o Zod só a tentaria
+// para acelerar a validação. Precisa rodar antes da criação dos schemas.
+z.config({ jitless: true })
+
 /**
  * Contrato do formulário de contato, compartilhado entre o navegador e a
  * Edge Function `contact` para que cliente e servidor validem exatamente igual.
