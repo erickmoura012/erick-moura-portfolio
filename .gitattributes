@@ -1,0 +1,8 @@
+# Quebras de linha LF em todos os ambientes: o Prettier exige LF e o build
+# confere o hash SHA-256 de public/theme-init.js na CSP (CRLF mudaria o hash).
+* text=auto eol=lf
+
+*.png binary
+*.webp binary
+*.avif binary
+*.woff2 binary
