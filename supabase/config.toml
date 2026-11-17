@@ -1,0 +1,21 @@
+# Configuração do Supabase CLI.
+# Vincule este diretório ao seu projeto com: npx supabase link --project-ref <ref>
+project_id = "erick-moura-portfolio"
+
+[api]
+enabled = true
+schemas = ["public"]
+
+[auth]
+# O painel administrativo não tem cadastro público. Novos usuários só podem ser
+# criados pelo dashboard do Supabase — e só viram administradores quando seu
+# id é inserido em public.admin_users.
+enable_signup = false
+
+# As duas funções fazem a própria autorização (ver cada index.ts), por isso a
+# verificação automática de JWT do gateway fica desligada.
+[functions.contact]
+verify_jwt = false
+
+[functions.github-sync]
+verify_jwt = false
