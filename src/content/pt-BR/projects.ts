@@ -74,25 +74,31 @@ export const projects: Project[] = [
     role: 'Colaborador',
     tagline: 'Plataforma de venda de fotos de eventos',
     description:
-      'Plataforma que conecta fotógrafos e participantes de eventos: os fotógrafos publicam as fotos de corridas, festas, formaturas, vaquejadas e esportes, e cada pessoa encontra as suas, paga e baixa o arquivo original.',
+      'Plataforma de venda de fotos de eventos em que atuei no front-end e no back-end: o participante encontra as próprias fotos enviando uma selfie, com reconhecimento facial da AWS Rekognition, e o fotógrafo publica e vende pelo painel.',
     challenge:
       'Fazer as milhares de fotos de cada evento chegarem às pessoas certas, com uma compra simples e segura para quem participou e uma forma de publicar e vender que valha a pena para os fotógrafos.',
     solution:
-      'Aplicação web em produção, construída com Next.js, que organiza as fotos por evento e categoria, permite buscar pelo nome, pela data ou pelo local do evento e conclui a compra com Pix ou cartão, com download imediato do original. Participei do projeto como colaborador.',
+      'Aplicação web em produção, construída com Next.js. Como colaborador, atuei no front-end e no back-end e desenvolvi a busca de fotos por selfie, que usa o reconhecimento facial da AWS Rekognition para localizar a pessoa entre as fotos do evento, além do painel de uso, da tela de fotógrafos, da tela de upload de fotos e do canal de suporte.',
     features: [
+      'Busca de fotos por selfie com reconhecimento facial (AWS Rekognition)',
+      'Painel de uso',
+      'Tela de fotógrafos',
+      'Upload de fotos dos eventos',
+      'Canal de suporte',
       'Busca de eventos por nome, data ou local',
-      'Categorias como corridas, festas, casamentos, vaquejadas e esportes',
-      'Galeria de fotos e vídeos de cada evento',
       'Pagamento com Pix ou cartão e download imediato do arquivo original',
-      'Recuperação de compras para quem já comprou',
-      'Área do fotógrafo para publicar e vender as fotos',
     ],
-    architecture: [],
+    architecture: [
+      'Selfie do participante → reconhecimento facial (AWS Rekognition) → fotos encontradas no evento',
+      'Fotógrafo → upload das fotos → evento publicado para venda',
+    ],
     highlights: [
-      'Produto em produção, usado por fotógrafos e participantes de eventos',
-      'Fluxo de compra com Pix ou cartão e entrega imediata do original',
+      'Busca de fotos por selfie com reconhecimento facial da AWS Rekognition',
+      'Painel de uso, tela de fotógrafos e tela de upload de fotos',
+      'Canal de suporte da plataforma',
+      'Atuação no front-end e no back-end de um produto em produção',
     ],
-    stack: ['Next.js', 'React'],
+    stack: ['Next.js', 'React', 'AWS Rekognition'],
     screenshots: [
       {
         src: '/projects/clicouai-1.webp',

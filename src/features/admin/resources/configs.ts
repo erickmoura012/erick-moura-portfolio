@@ -28,7 +28,7 @@ const SKILL_CATEGORY_LABELS = {
 }
 const SKILL_LEVEL_LABELS = {
   professional: 'Uso profissional',
-  projects: 'Projetos próprios',
+  projects: 'Uso em projetos',
   learning: 'Em aprendizado',
 }
 const EDUCATION_KIND_LABELS = {

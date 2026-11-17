@@ -7,6 +7,7 @@ import {
   Contact,
   MessageCircle,
   MessagesSquare,
+  ScanFace,
   Sparkles,
   SquareTerminal,
   Webhook,
@@ -79,6 +80,7 @@ export const GENERIC_ICONS: Record<string, LucideIcon> = {
   duda: MessageCircle,
   crm: Contact,
   salesforce: Cloud,
+  'face-recognition': ScanFace,
 }
 
 /** Chaves aceitas pelo campo `icon` das skills (usadas também no painel). */

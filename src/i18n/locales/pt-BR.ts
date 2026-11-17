@@ -179,7 +179,7 @@ export const ptBR = {
     },
     levels: {
       professional: 'Uso profissional',
-      projects: 'Projetos próprios',
+      projects: 'Uso em projetos',
       learning: 'Em aprendizado',
     },
     count: (count: number) => (count === 1 ? '1 tecnologia' : `${count} tecnologias`),

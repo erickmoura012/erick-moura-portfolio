@@ -11,7 +11,12 @@ const byCategory: Record<SkillCategory, SkillSeed[]> = {
     ['React', 'react', 'projects', 'Componentes, hooks e gerenciamento de estado.'],
     ['Tailwind CSS', 'tailwindcss', 'projects', 'Estilização utilitária e design systems.'],
     ['Sass', 'sass', 'learning', 'Partials, variáveis e mixins — usado no Finity.'],
-    ['Next.js', 'nextdotjs', 'learning', 'App Router e rotas de API — usado no RZE Sites.'],
+    [
+      'Next.js',
+      'nextdotjs',
+      'projects',
+      'Front-end e back-end — usado no ClicouAí e no RZE Sites.',
+    ],
   ],
   backend: [
     ['APIs REST', 'api', 'professional', 'Consumo e integração de serviços HTTP.'],
@@ -43,6 +48,12 @@ const byCategory: Record<SkillCategory, SkillSeed[]> = {
       'llm',
       'professional',
       'LLMs conectados a sistemas e dados via API.',
+    ],
+    [
+      'AWS Rekognition',
+      'face-recognition',
+      'projects',
+      'Reconhecimento facial na busca de fotos por selfie — usado no ClicouAí.',
     ],
   ],
   tools: [
