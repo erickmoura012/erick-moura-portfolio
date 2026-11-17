@@ -7,6 +7,11 @@ import { describe, expect, it, vi } from 'vitest'
 import { UiStateProvider } from '@/app/providers/ui-state'
 import { AppRoutes } from '@/app/router/AppRoutes'
 
+// Os testes simulam um ambiente sem Supabase, independentemente do .env.local da máquina.
+vi.mock('@/lib/env', () => ({
+  env: { supabaseUrl: null, supabaseKey: null, githubUsername: 'erickmoura012' },
+  isSupabaseConfigured: false,
+}))
 vi.mock('@/lib/supabase', () => ({ getSupabase: () => null }))
 vi.mock('@/features/github/data-source', async (importOriginal) => {
   const original = await importOriginal<typeof import('@/features/github/data-source')>()
