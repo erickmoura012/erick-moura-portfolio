@@ -1,0 +1,221 @@
+{
+  "username": "erickmoura012",
+  "user": {
+    "login": "erickmoura012",
+    "name": "Erick Moura Almeida",
+    "bio": "Estudante de Análise e desenvolvimento de sistemas | Desenvolvedor FullStack em constante evolução. Apaixonado por tecnologia & programação.",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/252657929?v=4",
+    "htmlUrl": "https://github.com/erickmoura012",
+    "publicRepos": 4,
+    "followers": 4,
+    "following": 6,
+    "createdAt": "2026-01-02T21:51:53Z"
+  },
+  "repos": [
+    {
+      "id": 1404765863,
+      "name": "Finity",
+      "fullName": "erickmoura012/Finity",
+      "description": "Gerenciador de tarefas",
+      "htmlUrl": "https://github.com/erickmoura012/Finity",
+      "homepage": "https://finity-erick.vercel.app/",
+      "language": "TypeScript",
+      "languages": {
+        "TypeScript": 153537,
+        "SCSS": 26441,
+        "HTML": 1258,
+        "JavaScript": 621,
+        "Dockerfile": 606
+      },
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "isArchived": false,
+      "createdAt": "2026-10-04T19:24:11Z",
+      "updatedAt": "2026-11-12T02:35:45Z",
+      "pushedAt": "2026-11-13T01:30:52Z"
+    },
+    {
+      "id": 1162877565,
+      "name": "erickmoura012",
+      "fullName": "erickmoura012/erickmoura012",
+      "description": null,
+      "htmlUrl": "https://github.com/erickmoura012/erickmoura012",
+      "homepage": null,
+      "language": null,
+      "languages": {},
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "isArchived": false,
+      "createdAt": "2026-02-20T20:06:44Z",
+      "updatedAt": "2026-10-23T18:37:49Z",
+      "pushedAt": "2026-10-23T18:37:44Z"
+    },
+    {
+      "id": 1404822817,
+      "name": "MenuFlow",
+      "fullName": "erickmoura012/MenuFlow",
+      "description": "Criação de um sistema para restaurantes, hamburguerias e pizzarias",
+      "htmlUrl": "https://github.com/erickmoura012/MenuFlow",
+      "homepage": "https://menuflow-phi.vercel.app/",
+      "language": "JavaScript",
+      "languages": {
+        "JavaScript": 54002,
+        "CSS": 31681,
+        "HTML": 21445
+      },
+      "topics": [],
+      "stars": 1,
+      "forks": 0,
+      "isFork": false,
+      "isArchived": false,
+      "createdAt": "2026-10-04T20:44:52Z",
+      "updatedAt": "2026-10-07T01:28:33Z",
+      "pushedAt": "2026-10-05T04:37:56Z"
+    },
+    {
+      "id": 1311583239,
+      "name": "rze-sites",
+      "fullName": "erickmoura012/rze-sites",
+      "description": null,
+      "htmlUrl": "https://github.com/erickmoura012/rze-sites",
+      "homepage": null,
+      "language": "TypeScript",
+      "languages": {
+        "TypeScript": 406569,
+        "CSS": 2087,
+        "JavaScript": 275
+      },
+      "topics": [],
+      "stars": 0,
+      "forks": 0,
+      "isFork": false,
+      "isArchived": false,
+      "createdAt": "2026-07-25T02:07:42Z",
+      "updatedAt": "2026-07-25T15:33:36Z",
+      "pushedAt": "2026-07-25T15:33:25Z"
+    }
+  ],
+  "activity": {
+    "days": [
+      {
+        "date": "2026-10-19",
+        "count": 1
+      },
+      {
+        "date": "2026-10-20",
+        "count": 2
+      },
+      {
+        "date": "2026-10-21",
+        "count": 0
+      },
+      {
+        "date": "2026-10-22",
+        "count": 1
+      },
+      {
+        "date": "2026-10-23",
+        "count": 2
+      },
+      {
+        "date": "2026-10-24",
+        "count": 8
+      },
+      {
+        "date": "2026-10-25",
+        "count": 1
+      },
+      {
+        "date": "2026-10-26",
+        "count": 1
+      },
+      {
+        "date": "2026-10-27",
+        "count": 2
+      },
+      {
+        "date": "2026-10-28",
+        "count": 3
+      },
+      {
+        "date": "2026-10-29",
+        "count": 1
+      },
+      {
+        "date": "2026-10-30",
+        "count": 0
+      },
+      {
+        "date": "2026-10-31",
+        "count": 0
+      },
+      {
+        "date": "2026-11-01",
+        "count": 8
+      },
+      {
+        "date": "2026-11-02",
+        "count": 0
+      },
+      {
+        "date": "2026-11-03",
+        "count": 1
+      },
+      {
+        "date": "2026-11-04",
+        "count": 0
+      },
+      {
+        "date": "2026-11-05",
+        "count": 0
+      },
+      {
+        "date": "2026-11-06",
+        "count": 2
+      },
+      {
+        "date": "2026-11-07",
+        "count": 0
+      },
+      {
+        "date": "2026-11-08",
+        "count": 1
+      },
+      {
+        "date": "2026-11-09",
+        "count": 0
+      },
+      {
+        "date": "2026-11-10",
+        "count": 1
+      },
+      {
+        "date": "2026-11-11",
+        "count": 0
+      },
+      {
+        "date": "2026-11-12",
+        "count": 1
+      },
+      {
+        "date": "2026-11-13",
+        "count": 1
+      }
+    ],
+    "byType": {
+      "PushEvent": 25,
+      "DeleteEvent": 2,
+      "CreateEvent": 2,
+      "PullRequestEvent": 8
+    },
+    "total": 37,
+    "from": "2026-10-19",
+    "to": "2026-11-13"
+  },
+  "contributions": null,
+  "syncedAt": "2026-11-17T17:20:47.059Z"
+}
