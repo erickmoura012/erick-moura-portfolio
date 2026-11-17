@@ -15,6 +15,7 @@ export function ProjectPreview({ values }: PreviewProps) {
     slug: text(values.slug) || 'preview',
     repoName: optionalText(values.repoName),
     title: text(values.title) || 'Título do projeto',
+    role: optionalText(values.role),
     tagline: text(values.tagline),
     description: text(values.description),
     challenge: optionalText(values.challenge),

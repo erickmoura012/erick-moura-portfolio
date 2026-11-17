@@ -32,6 +32,7 @@ export interface FieldConfig {
   type: FieldType
   /** Campos de texto opcionais são salvos como `null` quando vazios. */
   required?: boolean
+  /** Em campos de lista, é o limite de caracteres somando todos os itens. */
   maxLength?: number
   hint?: string
   placeholder?: string

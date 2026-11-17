@@ -92,6 +92,8 @@ export interface Project {
   /** Nome do repositório no GitHub, quando o projeto tem código público. */
   repoName: string | null
   title: string
+  /** Papel no projeto quando não é autoral (ex.: "Colaborador"). Nulo em projetos próprios. */
+  role: string | null
   tagline: string
   description: string
   challenge: string | null

@@ -64,10 +64,18 @@ function fieldSchema(field: FieldConfig): z.ZodType {
         if (items.length > MAX_LIST_ITEMS) {
           context.addIssue({ code: 'custom', message: `Use no máximo ${MAX_LIST_ITEMS} itens.` })
         }
-        if (items.some((item) => item.length > MAX_LIST_ITEM_LENGTH)) {
+        const total = items.reduce((sum, item) => sum + item.length, 0)
+        if (field.maxLength !== undefined && total > field.maxLength) {
           context.addIssue({
             code: 'custom',
-            message: `Cada item pode ter até ${MAX_LIST_ITEM_LENGTH} caracteres.`,
+            message: `Use no máximo ${field.maxLength.toLocaleString('pt-BR')} caracteres no total (atual: ${total.toLocaleString('pt-BR')}).`,
+          })
+        }
+        const itemLimit = field.maxLength ?? MAX_LIST_ITEM_LENGTH
+        if (items.some((item) => item.length > itemLimit)) {
+          context.addIssue({
+            code: 'custom',
+            message: `Cada item pode ter até ${itemLimit} caracteres.`,
           })
         }
       })

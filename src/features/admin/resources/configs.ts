@@ -58,6 +58,13 @@ export const projectsConfig: ResourceConfig = {
   fields: [
     { name: 'title', label: 'Título', type: 'text', required: true, maxLength: 120 },
     {
+      name: 'role',
+      label: 'Papel no projeto',
+      type: 'text',
+      maxLength: 60,
+      hint: 'Ex.: Colaborador. Deixe vazio em projetos próprios.',
+    },
+    {
       name: 'slug',
       label: 'Slug (endereço da página)',
       type: 'text',
@@ -259,8 +266,9 @@ export const profileFields: FieldConfig[] = [
     label: 'Sobre mim',
     type: 'list',
     required: true,
-    rows: 10,
-    hint: 'Um parágrafo por linha.',
+    rows: 12,
+    maxLength: 2000,
+    hint: 'Um parágrafo por linha. Até 2.000 caracteres no total.',
   },
   { name: 'githubUrl', label: 'GitHub', type: 'url', required: true },
   { name: 'linkedinUrl', label: 'LinkedIn', type: 'url', required: true },

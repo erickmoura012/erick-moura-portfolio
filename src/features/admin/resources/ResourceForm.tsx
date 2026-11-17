@@ -14,7 +14,7 @@ import { Field, fieldA11y, Input, Select, Textarea } from '@/components/ui/form'
 import { cn } from '@/lib/utils'
 import { Switch } from '../components/Switch'
 import { FileUrlField, ScreenshotsField } from '../components/UploadFields'
-import { buildSchema, toPayload } from './schema'
+import { buildSchema, splitLines, toPayload } from './schema'
 import type { FieldConfig, FormValues, PreviewProps } from './types'
 
 /** Primeira mensagem de erro de um campo, inclusive em estruturas aninhadas (imagens). */
@@ -27,6 +27,29 @@ function firstMessage(error: unknown): string | undefined {
     if (found) return found
   }
   return undefined
+}
+
+/** Contador ao vivo para listas com limite total (ex.: parágrafos do "Sobre mim"). */
+function ListCharacterCount({
+  control,
+  name,
+  max,
+}: {
+  control: Control<FormValues>
+  name: string
+  max: number
+}) {
+  const value = useWatch({ control, name })
+  const total = splitLines(String(value ?? '')).reduce((sum, line) => sum + line.length, 0)
+  const over = total > max
+  return (
+    <p
+      aria-live="polite"
+      className={cn('text-right font-mono text-xs', over ? 'text-danger' : 'text-subtle')}
+    >
+      {total.toLocaleString('pt-BR')} / {max.toLocaleString('pt-BR')} caracteres
+    </p>
+  )
 }
 
 interface FieldControlProps {
@@ -52,12 +75,17 @@ function FieldControl({ id, field, error, control, register }: FieldControlProps
       )
     case 'list':
       return (
-        <Textarea
-          rows={field.rows ?? 5}
-          placeholder={field.placeholder}
-          {...a11y}
-          {...register(field.name)}
-        />
+        <>
+          <Textarea
+            rows={field.rows ?? 5}
+            placeholder={field.placeholder}
+            {...a11y}
+            {...register(field.name)}
+          />
+          {field.maxLength !== undefined ? (
+            <ListCharacterCount control={control} name={field.name} max={field.maxLength} />
+          ) : null}
+        </>
       )
     case 'select':
       return (
